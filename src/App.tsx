@@ -1,29 +1,29 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useEffect, useState } from 'react';
-import { UserWarning } from './UserWarning';
-import { getTodos, USER_ID } from './api/todos';
+import { getTodos } from './api/todos';
 import { Todo } from './types/Todo';
+// import { UserWarning } from './UserWarning';
 
 export const App: React.FC = () => {
   const [query, setQuery] = useState<string>('');
-  const [newTask, setNewTask] = useState<string>('');
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [isLoadingChange, setIsLoadingChange] = useState(false);
   const [itemsLeft, setItemsLeft] = useState<number>(0);
   const [sortBy, setSortBy] = useState('all');
-  const [errorMessage, setErrorMessage] = useState<
-    string | null | boolean
-  >(null);
+  const [errorMessage, setErrorMessage] = useState<string | null | boolean>(
+    null,
+  );
+  // const [newTask, setNewTask] = useState<string>('');
+  // const [isLoadingChange, setIsLoadingChange] = useState(false);
 
   // if (!USER_ID) {
   //   return <UserWarning />;
   // }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setNewTask(query);
-  }
+  // function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  //   e.preventDefault();
+  //   setNewTask(query);
+  // }
 
   useEffect(() => {
     async function getTodosFromServer() {
@@ -81,7 +81,7 @@ export const App: React.FC = () => {
           />
 
           {/* Add a todo on form submit */}
-          <form onSubmit={handleSubmit}>
+          <form>
             <input
               data-cy="NewTodoField"
               type="text"
