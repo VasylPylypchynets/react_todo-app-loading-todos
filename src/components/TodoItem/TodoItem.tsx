@@ -9,6 +9,7 @@ export function TodoItem({ todo, onDeleteTodo }: TodoItemProps) {
   return (
     <div data-cy="Todo" className={`todo ${todo.completed ? 'completed' : ''}`}>
       <label htmlFor={`${todo.id}`} className="todo__status-label">
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <input
           id={`${todo.id}`}
           data-cy="TodoStatus"
@@ -16,15 +17,10 @@ export function TodoItem({ todo, onDeleteTodo }: TodoItemProps) {
           className="todo__status"
           checked={todo.completed}
         />
-        <span className="visually-hidden">
-          Mark {todo.title} as {todo.completed ? 'incomplete' : 'complete'}
-        </span>
       </label>
-
       <span data-cy="TodoTitle" className="todo__title">
         {todo.title}
       </span>
-
       {/* Remove button appears only on hover */}
       <button
         type="button"
@@ -34,7 +30,6 @@ export function TodoItem({ todo, onDeleteTodo }: TodoItemProps) {
       >
         ×
       </button>
-
       {/* Overlay will cover the todo while it is being deleted or updated */}
       <div data-cy="TodoLoader" className="modal overlay">
         <div className="modal-background has-background-white-ter" />
