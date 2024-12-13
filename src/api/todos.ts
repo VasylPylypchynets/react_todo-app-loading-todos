@@ -9,6 +9,6 @@ export const getTodos = () => {
 
 // Add more methods here
 
-export const DeleteTodo = () => {
-  return client.delete(`/todos?userId=${USER_ID}`);
+export const deleteTodo = (TODO_ID: number) => {
+  return client.delete(`/todos/${TODO_ID}`);
 };
